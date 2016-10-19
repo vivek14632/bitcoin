@@ -54,3 +54,4 @@ rmse<-function(x,y)
 
 rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
+#TODO: write function for MAE (Mean Absolute Error) as above
