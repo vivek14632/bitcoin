@@ -11,6 +11,8 @@ test<-bitcoin[bitcoin$Date>'2016-05-31',]
 #Autoregressive model
 arModel<-ar(training$Close.Price)
 arModelPrediction<-predict(arModel,n.ahead = 29)
+#RMSE
+rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
 
 plot(test$Close.Price,type="b",ylim = c(1,1000),xlab = "Hours",
@@ -21,23 +23,27 @@ lines(as.numeric(arModelPrediction$pred),pch=2,type = "b")
 arModel<-ar(training$Close.Price,model="yule-walker")
 arModelPrediction<-predict(arModel,n.ahead = 29)
 lines(as.numeric(arModelPrediction$pred),pch=3,type = "b")
+rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
 arModel<-ar(training$Close.Price,model="burg")
 arModelPrediction<-predict(arModel,n.ahead = 29)
 lines(as.numeric(arModelPrediction$pred),pch=4,type = "b")
-?ar
+rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
 arModel<-ar(training$Close.Price,model="ols")
 arModelPrediction<-predict(arModel,n.ahead = 29)
 lines(as.numeric(arModelPrediction$pred),pch=5,type = "b")
+rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
 arModel<-ar(training$Close.Price,model="mle")
 arModelPrediction<-predict(arModel,n.ahead = 29)
 lines(as.numeric(arModelPrediction$pred),pch=6,type = "b")
+rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
 arModel<-ar(training$Close.Price,model="yw")
 arModelPrediction<-predict(arModel,n.ahead = 29)
 lines(as.numeric(arModelPrediction$pred),pch=7,type = "b")
+rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
 
 legend("bottom",c("Actual","AR prediction",
