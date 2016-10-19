@@ -12,7 +12,9 @@ test<-bitcoin[bitcoin$Date>'2016-05-31',]
 # Here it is taking default order (p). We have to explore by giving different orders
 arModel<-ar(training$Close.Price)
 arModelPrediction<-predict(arModel,n.ahead = 29)
-#RMSE
+#RMSE (Roor Mean Square Error). The function is defined at the bottom of the code.
+#Actually, that piece of code should be run first before applying the function.
+#In the following line, we are applying RMSC function on the testing data
 rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
 
