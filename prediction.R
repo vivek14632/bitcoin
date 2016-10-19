@@ -60,10 +60,4 @@ rmse<-function(x,y)
 
 rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
-#TODO: write function for MAE (Mean Absolute Error) as above
-
-
-
-# ARIMA model analysis
-
-
+#TODO: write function for MAE (Mean Absolute Error) as above and run it for all the models. We shall see if there is any significant difference in the error among  different models
