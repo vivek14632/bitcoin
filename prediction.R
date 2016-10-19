@@ -17,9 +17,11 @@ arModelPrediction<-predict(arModel,n.ahead = 29)
 #In the following line, we are applying RMSC function on the testing data
 rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
-
+# Plotting the test values. 'ylim' is to mention the range of y values. R will consider this range for all the plots. 
 plot(test$Close.Price,type="b",ylim = c(1,1000),xlab = "Hours",
      ylab = "USD", main = "Prediction for July 2016")
+
+#Plotting the predicted values. pch=2 displays the points as *.
 lines(as.numeric(arModelPrediction$pred),pch=2,type = "b")
 
 #There are different algorithms for AR model. In the following code, we evaluate different algorithms
