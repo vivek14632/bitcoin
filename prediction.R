@@ -9,6 +9,7 @@ training<-bitcoin[bitcoin$Date<='2016-05-31',]
 test<-bitcoin[bitcoin$Date>'2016-05-31',]
 
 #Autoregressive model
+# Here it is taking default order (p). We have to explore by giving different orders
 arModel<-ar(training$Close.Price)
 arModelPrediction<-predict(arModel,n.ahead = 29)
 #RMSE
