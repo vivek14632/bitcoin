@@ -45,7 +45,7 @@ arModelPrediction<-predict(arModel,n.ahead = 29)
 lines(as.numeric(arModelPrediction$pred),pch=7,type = "b")
 rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
-
+#show the legends for each of the models.
 legend("bottom",c("Actual","AR prediction",
                   "AR-yule-walker","AR-Burg","AR-ols","AR-mle",
                   "AR-yw"),pch=c(1,2,3,4,5,6,7))
