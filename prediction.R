@@ -1,5 +1,6 @@
 
 bitcoin<-read.csv(file.choose(),header = T)
+#bitcoin_jan_15_to_june_16.csv . Its in box folder
 bitcoin$Date<-as.Date(bitcoin$Date)
 
 training<-bitcoin[bitcoin$Date<='2016-05-31',]
