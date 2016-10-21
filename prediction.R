@@ -66,3 +66,49 @@ rmse<-function(x,y)
 rmse(test$Close.Price,as.numeric(arModelPrediction$pred))
 
 #TODO: write function for MAE (Mean Absolute Error) as above and run it for all the models. We shall see if there is any significant difference in the error among  different models
+
+bitcoin<-read.csv(file.choose(),header = T)
+#bitcoin_jan_15_to_june_16.csv . Its in box folder
+bitcoin$Date<-as.Date(bitcoin$Date)
+
+#training till may
+training<-bitcoin[bitcoin$Date<='2016-05-31',]
+#testing for june
+test<-bitcoin[bitcoin$Date>'2016-05-31',]
+
+#Autoregressive model
+# Here it is taking default order (p). We have to explore by giving different orders
+arModel<-ar(training$Close.Price)
+
+arModelPrediction<-predict(arModel,n.ahead = 29)
+
+rmse<-function(x,y)
+{
+  sqrt(sum((x-y)^2)/length(x))
+}
+
+mape<-function(x,y)
+{
+  (sum(abs(x-y)/x)/length(x))
+}
+rmseM<-rep(0,29)
+mapeM<-rep(0,29)
+for (i in 1:29)
+{
+  rmseM[i]<-rmse(test$Close.Price[1:i],as.numeric(arModelPrediction$pred)[1:i])
+}
+
+rmseM
+
+for (i in 1:29)
+{
+  mapeM[i]<-mape(test$Close.Price[1:i],as.numeric(arModelPrediction$pred)[1:i])
+}
+
+plot(rmseM,type="b")
+?plot
+
+plot(mapeM,type="b",xlab="Number of Days of Prediction",ylab="MAPE",main="AR model")
+
+plot(rmseM,type="b",xlab="Number of Days of Prediction",ylab="RMSE",main="AR model")
+
