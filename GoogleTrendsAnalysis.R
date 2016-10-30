@@ -1,6 +1,6 @@
 install.packages('gtrendsR')
 library('gtrendsR')
-xx<-gconnect(usr = 'vivekfordata@gmail.com', psw = 'vivekfordata#$#', verbose = FALSE)
+xx<-gconnect(usr = '***********', psw = '********', verbose = FALSE)
 result1<-gtrends("bitcoin", start_date = "2015-01-01", end_date = "2015-03-31")
 result2<-gtrends("bitcoin", start_date = "2015-04-01", end_date = "2015-06-30")
 result3<-gtrends("bitcoin", start_date = "2015-07-01", end_date = "2015-09-30")
